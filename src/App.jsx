@@ -1,5 +1,11 @@
+import { useState } from "react";
+
 function App() {
-  return <div></div>;
+  const [numbers] = useState([10, 20, 30]);
+
+  const total = numbers.reduce((acc, number) => acc + number, 0);
+
+  return <div>Total: {total}</div>;
 }
 
 export default App;
