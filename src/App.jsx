@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 function App() {
   const [numbers] = useState([10, 20, 30]);
 
-  const total = numbers.reduce((acc, number) => acc + number, 0);
+  const total = useMemo(
+    () => numbers.reduce((acc, number) => acc + number, 0),
+    [numbers],
+  );
 
-  return <div>Total: {total}</div>;
+  const [names] = useState(["Pader", "Bob", "Jo", "Paul"]);
+
+  const sortedNames = [...names].sort();
+
+  return (
+    <>
+      <div>Total: {total}</div>
+      <div>Names: {names.join(", ")}</div>
+      <div>sortedNames: {sortedNames.join(", ")}</div>
+    </>
+  );
 }
 
 export default App;
