@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 
 function SortedList({ list, sortFunc }) {
   console.log("sortedList Render");
@@ -24,7 +24,7 @@ function App() {
 
   const countTotal = count1 + count2;
 
-  const sortFunc = (a, b) => a.localeCompare(b);
+  const sortFunc = useCallback((a, b) => a.localeCompare(b) * -1, []);
 
   return (
     <>
